@@ -1,68 +1,42 @@
-const quoteContainer = document.getElementById('quote-container');
-const quoteText = document.getElementById('quote');
-const authorText = document.getElementById('author');
-const twitterBtn = document.getElementById('twitter');
-const newQuoteBtn = document.getElementById('new-quote');
-const loader = document.getElementById('loader');
+const quoteText = document.querySelector(".quote"),
+quoteBtn = document.querySelector("button"),
+authorName = document.querySelector(".author .name"),
+soundBtn = document.querySelector(".sound"),
+copyBtn = document.querySelector(".copy"),
+facebookBtn = document.querySelector(".facebook");
 
-let apiQuotes = [];
-
-// Loading Spinner Shown
-function loading() {
-  loader.hidden = false;
-  quoteContainer.hidden = true;
+// Generating random quotes when clicking button
+function randomQuote() {
+  quoteBtn.classList.add("loading");
+  quoteBtn.innerText = "Loading Quote..";
+  //Fetching random quotes from API and parsing it into JS object
+  fetch("https://api.quotable.io/random").then(response => 
+    response.json()).then(result=> {
+    quoteText.innerText = result.content;
+    authorName.innerText = result.author;
+    quoteBtn.innerText = "New Quote";
+    quoteBtn.classList.remove("loading");
+  });
 }
 
-// Remove Loading Spinner
-function complete() {
-  quoteContainer.hidden = false;
-  loader.hidden = true;
-}
-
-// Show New Quote
-function newQuote() {
-  loading();
-  // Pick a random quote from array
-  const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
-  // Check if Author field is blank and replace it with 'Unknown'
-  if (!quote.author) {
-    authorText.textContent = 'Unknown';
-  } else {
-    authorText.textContent = quote.author;
-  }
-  // Check Quote length to determine styling
-  if (quote.text.length > 120) {
-    quoteText.classList.add('long-quote');
-  } else {
-    quoteText.classList.remove('long-quote');
-  }
-  // Set Quote, Hide Loader
-  quoteText.textContent = quote.text;
-  complete();
-}
-
-// Get Quotes From API
-async function getQuotes() {
-  loading();
-  const apiUrl = 'https://type.fit/api/quotes';
-  try {
-    const response = await fetch(apiUrl);
-    apiQuotes = await response.json();
-    newQuote();
-  } catch (error) {
-    // Catch Error Here
-  }
-}
-
-// Tweet Quote
-function tweetQuote() {
-  const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.innerText} - ${authorText.innerText}`;
-  window.open(twitterUrl, '_blank');
-}
-
-// Event Listeners
-newQuoteBtn.addEventListener('click', newQuote);
-twitterBtn.addEventListener('click', tweetQuote);
-
-// On Load
-getQuotes();
+//Add eventlistener
+//when we click "New Quote" button
+quoteBtn.addEventListener("click", randomQuote);
+//When we click on sound icon
+soundBtn.addEventListener("click", ()=>{
+  //the speechSynthesisUtterance is a web speech api that represents a speech request
+  let utterance = new SpeechSynthesisUtterance(`${quoteText.innerText} said by ${authorName.innerText}`);
+  //speak method of speechSynthesis speaks the utterance
+  speechSynthesis.speak(utterance);
+});
+//When we click on copy icon
+copyBtn.addEventListener("click",()=> {
+  //copying the quote Text
+  //writeText() property writes the specified text strings to the system clipboard
+  navigator.clipboard.writeText(quoteText.innerText);
+});
+//when we click on facebook icon
+facebookBtn.addEventListener("click",()=>{
+  let fbUrl = `https://www.facebook.com/sharer/sharer.php?url=${quoteText.innerText}`;
+  window.open(fbUrl,"_blank");
+});
