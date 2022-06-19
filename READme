@@ -1,5 +1,10 @@
 This project is built using Vanilla JavaScript.
-To view this project: (https://surraiya.github.io/quote_generator/).
-This is a quote generator website which integrated with twitter, so you can not only see the quote, but also post it via your twitter account.
+To view this project: (https://quote-1.surraiyaislam.repl.co/).
+This quote generator website shows random quotes. These quotes are fetched from API and parsed into JavaScript objects.
+These website has following features:
+1. It shows random quotes along with the author name
+2. The quote can be converted into speech
+3. The quote can be copied
+4. You can share the quote on facebook
 
 
