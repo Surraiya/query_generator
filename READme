@@ -1,10 +1,39 @@
-This project is built using Vanilla JavaScript.
-To view this project: (https://quote-1.surraiyaislam.repl.co/).
-This quote generator website shows random quotes. These quotes are fetched from API and parsed into JavaScript objects.
-These website has following features:
-1. It shows random quotes along with the author name
-2. The quote can be converted into speech
-3. The quote can be copied
-4. You can share the quote on facebook
+# Quote Generator Website
 
+This project is a simple yet engaging Quote Generator Website built using Vanilla JavaScript. It allows users to discover random quotes along with their respective author names. The quotes are fetched from an external API and parsed into JavaScript objects to provide an interactive user experience.
 
+To view this project, visit [Quote Generator Website](https://quote-1.surraiyaislam.repl.co/).
+
+## Features
+
+The Quote Generator Website offers the following features:
+
+1. **Random Quotes:** The website displays random quotes, providing users with inspirational and thought-provoking content.
+
+2. **Text-to-Speech:** Users can click a button to have the selected quote read aloud, enhancing accessibility and user engagement.
+
+3. **Copy Quote:** The website allows users to easily copy the displayed quote to their clipboard with the click of a button.
+
+4. **Share on Facebook:** Users can share their favorite quotes on Facebook, spreading positivity and inspiration to their social networks.
+
+## Technologies Used
+
+This project is primarily built with the following technologies:
+
+- **Vanilla JavaScript:** The core functionality of the website is implemented using pure JavaScript, making it lightweight and fast.
+
+- **External API:** Quotes are fetched from an external API, providing a diverse and ever-changing collection of content.
+
+- **HTML and CSS:** The website's structure and styling are achieved using HTML and CSS, ensuring an appealing and user-friendly design.
+
+## Getting Started
+
+To run this project locally or deploy it to your own hosting:
+
+1. Clone this repository to your local machine using `git clone`.
+
+2. Open the `index.html` file in your preferred web browser to view the website locally.
+
+3. If you wish to deploy the website to a hosting platform, upload all project files (including the HTML, CSS, and JavaScript files) to your chosen hosting provider.
+
+4. Ensure that your hosting environment supports fetching data from external APIs.
